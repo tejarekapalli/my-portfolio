@@ -8,61 +8,69 @@ import {
 
 function Contact() {
   const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  setStatus("Sending...");
+    setLoading(true);
+    setStatus("Sending...");
 
-  const formData = new FormData(event.target);
+    const formData = new FormData(event.target);
 
-  formData.append(
-    "access_key",
-    "aeb7451a-4868-4dec-8b7a-b269ab7577f8"
-  );
-
-  formData.append(
-    "subject",
-    "New Portfolio Contact Message"
-  );
-
-  const data = Object.fromEntries(formData);
-  const json = JSON.stringify(data);
-
-  try {
-    const response = await fetch(
-      "https://api.web3forms.com/submit",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: json,
-      }
+    formData.append(
+      "access_key",
+      "aeb7451a-4868-4dec-8b7a-b269ab7577f8"
     );
 
-    const result = await response.json();
+    formData.append(
+      "subject",
+      "New Portfolio Contact Message"
+    );
 
-    console.log("Web3Forms:", result);
+    const data = Object.fromEntries(formData);
+    const json = JSON.stringify(data);
 
-    if (result.success) {
-      setStatus("Message sent successfully! 🚀");
-      event.target.reset();
-    } else {
-      setStatus(result.message || "Something went wrong.");
-      console.error("Web3Forms error:", result);
+    try {
+      const response = await fetch(
+        "https://api.web3forms.com/submit",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: json,
+        }
+      );
+
+      const result = await response.json();
+
+      console.log("Web3Forms:", result);
+
+      if (result.success) {
+        setStatus("Message sent successfully! 🚀");
+        event.target.reset();
+      } else {
+        setStatus(
+          result.message || "Something went wrong."
+        );
+      }
+    } catch (error) {
+      console.error("Request error:", error);
+
+      setStatus(
+        "Unable to connect to Web3Forms."
+      );
+    } finally {
+      setLoading(false);
     }
-  } catch (error) {
-    console.error("Request error:", error);
-    setStatus("Unable to connect to Web3Forms.");
-  }
-};
+  };
 
   return (
     <section
       id="contact"
-      className="py-24 bg-[#0f172a] text-white"
+      className="py-20 md:py-24 bg-[#0f172a] text-white"
     >
       <div className="max-w-5xl mx-auto px-6">
 
@@ -71,7 +79,7 @@ function Contact() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-14"
+          className="text-center mb-10 md:mb-14"
         >
           <h2 className="text-4xl md:text-5xl font-bold">
             Get In Touch
@@ -79,21 +87,21 @@ function Contact() {
 
           <div className="w-16 h-1 bg-blue-500 mx-auto mt-4"></div>
 
-          <p className="text-gray-400 mt-5 max-w-2xl mx-auto">
+          <p className="text-gray-400 mt-5 max-w-2xl mx-auto leading-7">
             I'm currently open to backend development opportunities.
             Feel free to reach out if you'd like to discuss a project,
             opportunity, or collaboration.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-10">
 
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-[#111827] border border-gray-700 rounded-2xl p-8"
+            className="bg-[#111827] border border-gray-700 rounded-2xl p-6 md:p-8"
           >
             <h3 className="text-2xl font-semibold">
               Let's Connect
@@ -108,11 +116,14 @@ function Contact() {
             <div className="mt-8 space-y-5">
 
               <a
-                href="mailto:YOUR_EMAIL@example.com"
-                className="flex items-center gap-4 text-gray-300 hover:text-blue-500 transition"
+                href="mailto:rekapalliteja1@gmail.com"
+                className="flex items-center gap-4 text-gray-300 hover:text-blue-500 transition break-all"
               >
                 <FaEnvelope size={22} />
-                <span>YOUR_EMAIL@example.com</span>
+
+                <span>
+                  rekapalliteja1@gmail.com
+                </span>
               </a>
 
               <a
@@ -122,7 +133,10 @@ function Contact() {
                 className="flex items-center gap-4 text-gray-300 hover:text-blue-500 transition"
               >
                 <FaGithub size={22} />
-                <span>GitHub</span>
+
+                <span>
+                  GitHub
+                </span>
               </a>
 
               <a
@@ -132,7 +146,10 @@ function Contact() {
                 className="flex items-center gap-4 text-gray-300 hover:text-blue-500 transition"
               >
                 <FaLinkedin size={22} />
-                <span>LinkedIn</span>
+
+                <span>
+                  LinkedIn
+                </span>
               </a>
 
             </div>
@@ -144,7 +161,7 @@ function Contact() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-[#111827] border border-gray-700 rounded-2xl p-8"
+            className="bg-[#111827] border border-gray-700 rounded-2xl p-6 md:p-8"
           >
             <div>
               <label className="block text-gray-300 mb-2">
@@ -190,9 +207,10 @@ function Contact() {
 
             <button
               type="submit"
-              className="mt-6 w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-medium transition"
+              disabled={loading}
+              className="mt-6 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 py-3 rounded-lg font-medium transition"
             >
-              Send Message
+              {loading ? "Sending..." : "Send Message"}
             </button>
 
             {status && (

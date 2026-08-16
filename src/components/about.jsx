@@ -1,19 +1,43 @@
+import { motion } from "framer-motion";
+
 function About() {
   return (
     <section
       id="about"
-      className="py-24 bg-[#111827] text-white"
+      className="py-20 sm:py-24 bg-[#0f172a] text-white"
     >
-      <div className="max-w-4xl mx-auto px-6 sm:px-8">
+      <div className="max-w-5xl mx-auto px-6 sm:px-8">
 
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center">
-          About Me
-        </h2>
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold">
+            About Me
+          </h2>
 
-        <div className="w-16 h-1 bg-blue-500 mx-auto mt-4 mb-10"></div>
+          <div className="w-20 h-1 bg-blue-500 mx-auto mt-5"></div>
+        </motion.div>
 
-        <div className="text-gray-400 text-lg leading-8">
-          <p>
+        {/* Paragraphs */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="w-full"
+        >
+          <p
+            className="
+              text-gray-300
+              text-lg
+              sm:text-xl
+              leading-10
+              text-justify
+            "
+          >
             I'm{" "}
             <span className="font-semibold text-white">
               Rekapalli Teja
@@ -22,13 +46,22 @@ function About() {
             scalable microservices and REST APIs using Node.js and NestJS.
           </p>
 
-          <p className="mt-6">
-            I specialize in designing secure, high-performance backend
-            systems using MongoDB, PostgreSQL, Redis, Apache Kafka, Docker,
-            and WebSockets. I enjoy solving complex backend challenges and
-            building distributed systems that can scale.
+          <p
+            className="
+              text-gray-300
+              text-lg
+              sm:text-xl
+              leading-10
+              mt-8
+              text-justify
+            "
+          >
+            I specialize in designing secure, high-performance backend systems
+            using MongoDB, PostgreSQL, Redis, Apache Kafka, Docker, and
+            WebSockets. I enjoy solving complex backend challenges and building
+            scalable distributed systems.
           </p>
-        </div>
+        </motion.div>
 
       </div>
     </section>

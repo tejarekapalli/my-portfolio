@@ -11,24 +11,19 @@ import Resume from "./components/resume";
 
 function App() {
   return (
-    <div className="bg-[#0f172a] text-white">
+    <div className="min-h-screen bg-[#0f172a] text-white">
       <Navbar />
 
-      <Hero />
-
-      <About />
-
-      <Expertise />
-
-      <Skills />
-
-      <Experience />
-
-      <Projects />
-
-      <Resume />
-
-      <Contact />
+      <main className="pt-20">
+        <Hero />
+        <About />
+        <Expertise />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Resume />
+        <Contact />
+      </main>
 
       <Footer />
     </div>

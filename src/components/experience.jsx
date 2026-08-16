@@ -4,9 +4,9 @@ import { FaBriefcase } from "react-icons/fa";
 function Experience() {
   return (
     <section
-      id="experience"
-      className="py-24 bg-[#111827] text-white"
-    >
+  id="experience"
+  className="py-20 md:py-24 bg-[#0f172a] text-white"
+>
       <div className="max-w-5xl mx-auto px-8">
 
         {/* Heading */}

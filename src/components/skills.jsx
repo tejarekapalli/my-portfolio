@@ -55,9 +55,9 @@ function Skills() {
 
   return (
     <section
-      id="skills"
-      className="py-24 bg-[#0f172a] text-white"
-    >
+  id="skills"
+  className="py-20 md:py-24 bg-[#111827] text-white"
+>
       <div className="max-w-6xl mx-auto px-8">
 
         {/* Heading */}

@@ -41,16 +41,47 @@ function Projects() {
         "Category management",
         "REST API architecture",
       ],
-      technologies: ["Node.js", "MongoDB", "Redis", "REST APIs"],
+      technologies: ["Node.js", "MongoDB", "Redis", "Kafka", "REST APIs"],
       github: "#",
     },
+
+    {
+  title: "Presumelink",
+  description:
+    "A career platform where students and professionals can create professional resumes using multiple customizable designs and practice AI-powered interviews to improve their communication, confidence, and interview skills.",
+  features: [
+    "User registration & profile management",
+    "Resume builder with multiple designs",
+    "AI-powered mock interviews",
+    "Interview performance & feedback",
+    "Career profile management",
+  ],
+  technologies: ["NestJS", "MongoDB", "Redis", "REST APIs", "AI"],
+  github: "#",
+},
+
+{
+  title: "Pidikili",
+  description:
+    "A community-driven social platform that connects people seeking help with working professionals and volunteers who can provide support across areas such as legal assistance, medical guidance, blood support, and other community needs.",
+  features: [
+    "Invite-only user registration",
+    "Community help requests",
+    "Professional & volunteer connections",
+    "Direct in-app communication",
+    "Social contribution recognition",
+    "Multi-level community administration",
+  ],
+  technologies: ["Node.js", "MongoDB", "Redis", "REST APIs"],
+  github: "#",
+},
   ];
 
   return (
     <section
-      id="projects"
-      className="py-24 bg-[#111827] text-white"
-    >
+  id="projects"
+  className="py-20 md:py-24 bg-[#111827] text-white"
+>
       <div className="max-w-6xl mx-auto px-8">
 
         {/* Heading */}
