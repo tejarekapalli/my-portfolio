@@ -14,7 +14,7 @@ function Projects() {
         "Role-based access control",
       ],
       technologies: ["NestJS", "MongoDB", "Kafka", "Redis"],
-      github: "#",
+      // github: "#",
     },
 
     {
@@ -28,7 +28,7 @@ function Projects() {
         "Real-time communication",
       ],
       technologies: ["Node.js", "NestJS", "MongoDB", "Kafka"],
-      github: "#",
+      // github: "#",
     },
 
     {
@@ -42,7 +42,7 @@ function Projects() {
         "REST API architecture",
       ],
       technologies: ["Node.js", "MongoDB", "Redis", "Kafka", "REST APIs"],
-      github: "#",
+      // github: "#",
     },
 
     {
@@ -57,7 +57,7 @@ function Projects() {
     "Career profile management",
   ],
   technologies: ["NestJS", "MongoDB", "Redis", "REST APIs", "AI"],
-  github: "#",
+  // github: "#",
 },
 
 {
@@ -73,7 +73,7 @@ function Projects() {
     "Multi-level community administration",
   ],
   technologies: ["Node.js", "MongoDB", "Redis", "REST APIs"],
-  github: "#",
+  // github: "#",
 },
   ];
 
@@ -144,7 +144,7 @@ function Projects() {
               </div>
 
               {/* Buttons */}
-              <div className="flex gap-5 mt-7">
+              {/* <div className="flex gap-5 mt-7">
 
                 <a
                   href={project.github}
@@ -162,7 +162,7 @@ function Projects() {
                   Details
                 </a>
 
-              </div>
+              </div> */}
 
             </motion.div>
           ))}
